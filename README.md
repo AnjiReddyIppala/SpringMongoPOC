@@ -1,1 +1,1 @@
-# SpringMongoPOC
+# SpringDb2Project
