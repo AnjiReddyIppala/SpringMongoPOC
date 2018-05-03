@@ -1,29 +1,41 @@
 package com.lowes.commerce.controller;
 
-import javax.xml.ws.Response;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lowes.commerce.bean.RegistrationFormBean;
+import com.lowes.commerce.model.Users;
+import com.lowes.commerce.repository.UsersRepository;
 
 @RestController
-@RequestMapping("/registration")
+@RequestMapping("/")
 public class RegistrationController {
+	@Autowired
+	private UsersRepository userRepository;
+	
+	
 
-	@RequestMapping(value="/member/add", method= RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public String addNewMember(@RequestBody RegistrationFormBean registrationFormBean) {
+	@PostMapping(value="/member/add")
+	public String addNewMember(@RequestBody Users users) {
 		
-		String firstName = registrationFormBean.getFirstName();
-		String lastName = registrationFormBean.getLastName();
+		userRepository.save(users);
 		
-		String result = firstName+lastName;
-		
-		
-		
-		
-		return result;
+			
+		return "User Registered Successfully";
 	}
+	
+	
+	@GetMapping("/member/{usersid}")
+	
+	public List<Users> getUserDetails()
+	{
+		
+		return userRepository.findAll();
+	}
+	
 }
