@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lowes.commerce.model.Member;
 import com.lowes.commerce.model.Mongo;
 import com.lowes.commerce.service.MongoService;
 
@@ -35,6 +36,8 @@ public class MongoController {
 	    	mongo.setId(id);
 	    	mongo.setNome(name);
 	    	mongo.setIdade(date);
+	    	Member member = new Member();
+	    	
 	        return mongoService.addPessoa(mongo);
 	    }
 
