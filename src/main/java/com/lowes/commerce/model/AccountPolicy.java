@@ -1,23 +1,19 @@
 package com.lowes.commerce.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Document(collection="member")
+@Document(collection="plcyactt")
 @Setter @Getter
-public class Member {
-	
+public class AccountPolicy {
+
 	@Id
-	private int memberId;
-	private String type;
-	private int state;
+	private int plcyacctId;
+	private int plcyacclckId;
+	private int plcypasswdId;
 	private int optCounter;
-	private List<Address> addressList = new ArrayList<Address>();
-	
+
 }
